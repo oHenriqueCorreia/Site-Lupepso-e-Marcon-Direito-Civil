@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupepso & Marcon | Advocacia Cível</title>
+    <meta name="description" content="Soluções Jurídicas Estratégicas em Direito Cível com Foco em Resultados. Atuação Consultiva e Contenciosa de Alto Padrão.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="apple-touch-icon" href="assets/favicon.webp">
+    <meta name="theme-color" content="#424336">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (Leve e moderno) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#8A5F3B',
+                            goldlight: '#a8784e',
+                            black: '#424336', /* verde escuro */
+                            dark: '#2e2f23', /* verde muito escuro */
+                            offwhite: '#f8fafc', /* slate-50 */
+                            gray: '#334155' /* slate-700 */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles & Animations */
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { box-shadow: 0 0 0 0 rgba(138, 95, 59, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 95, 59, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 95, 59, 0); }
+        }
+        
+        .whatsapp-pulse {
+            animation: whatsapp-pulse 2s infinite;
+        }
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+            padding-top: 1rem;
+            padding-bottom: 1.25rem;
+        }
+        .icon-rotate {
+            transition: transform 0.3s ease;
+        }
+        .active .icon-rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite text-brand-gray font-sans antialiased overflow-x-hidden">
+
+    <!-- 1. Header / Navbar -->
+    <header class="fixed w-full z-50 bg-brand-black/95 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 transition-all duration-300" id="navbar-inner">
+                <a href="#" class="flex items-center">
+                    <img src="assets/logo.png" alt="Lupepso & Marcon Advocacia" class="h-14 w-auto object-contain transition-all duration-300" id="navbar-logo">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-xs tracking-wider uppercase text-gray-300 hover:text-brand-gold transition-colors">Início</a>
+                    <a href="#sobre" class="text-xs tracking-wider uppercase text-gray-300 hover:text-brand-gold transition-colors">Sobre</a>
+                    <a href="#areas" class="text-xs tracking-wider uppercase text-gray-300 hover:text-brand-gold transition-colors">Áreas de Atuação</a>
+                    <a href="#diferenciais" class="text-xs tracking-wider uppercase text-gray-300 hover:text-brand-gold transition-colors">Diferenciais</a>
+                    <a href="#faq" class="text-xs tracking-wider uppercase text-gray-300 hover:text-brand-gold transition-colors">Dúvidas</a>
+                    <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="bg-brand-gold hover:bg-brand-goldlight text-brand-black px-5 py-2.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all">
+                        <i class="ph ph-whatsapp-logo text-lg"></i>
+                        Fale com um Especialista
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-brand-gold transition-colors">
+                    <i class="ph ph-list text-3xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-dark border-t border-white/10 shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#inicio" class="mobile-link block px-3 py-4 text-sm tracking-wider uppercase text-gray-300 hover:text-brand-gold border-b border-white/5">Início</a>
+                <a href="#sobre" class="mobile-link block px-3 py-4 text-sm tracking-wider uppercase text-gray-300 hover:text-brand-gold border-b border-white/5">Sobre</a>
+                <a href="#areas" class="mobile-link block px-3 py-4 text-sm tracking-wider uppercase text-gray-300 hover:text-brand-gold border-b border-white/5">Áreas de Atuação</a>
+                <a href="#diferenciais" class="mobile-link block px-3 py-4 text-sm tracking-wider uppercase text-gray-300 hover:text-brand-gold border-b border-white/5">Diferenciais</a>
+                <a href="#faq" class="mobile-link block px-3 py-4 text-sm tracking-wider uppercase text-gray-300 hover:text-brand-gold border-b border-white/5">Dúvidas</a>
+                <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="mt-4 bg-brand-gold text-brand-black px-4 py-3.5 text-center text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="ph ph-whatsapp-logo text-xl"></i>
+                    Fale com um Especialista
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Seção Hero -->
+    <section id="inicio" class="relative pt-36 pb-24 lg:pt-48 lg:pb-32 bg-brand-black overflow-hidden">
+        <!-- Background Overlay with Image -->
+        <div class="absolute inset-0 overflow-hidden flex justify-end items-end">
+            <!-- Foto da equipe um pouco menor e alinhada abaixo do menu -->
+            <img src="assets/hero-bg-new.jpg" alt="Equipe Lupepso & Marcon" class="w-full h-[85%] md:h-[90%] object-cover object-[right_top] grayscale-[15%]">
+            <!-- Degrade da esquerda para direita -->
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent"></div>
+            <!-- Degrade sutil do topo para disfarçar o corte da imagem -->
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/10 to-transparent h-1/3"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <!-- Selo de Autoridade -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-brand-gold/50 text-brand-gold text-xs font-semibold uppercase tracking-widest mb-8">
+                    <i class="ph-fill ph-scales"></i>
+                    Atuação Consultiva e Contenciosa de Alto Padrão
+                </div>
+                
+                <!-- Headline -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white font-bold leading-[1.15] mb-6">
+                    Soluções Jurídicas Estratégicas em <span class="text-brand-gold italic font-normal">Direito Cível</span> com Foco em Resultados.
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-lg md:text-xl text-gray-300 mb-10 font-light leading-relaxed max-w-2xl">
+                    Protegemos seu patrimônio, seus contratos e seus direitos com atendimento ágil, personalizado e de excelência na Região Metropolitana e online para todo o Brasil.
+                </p>
+                
+                <!-- Botões CTA -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="pulse-btn bg-brand-gold hover:bg-brand-goldlight text-brand-black px-8 py-4 text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+                        <i class="ph ph-whatsapp-logo text-2xl"></i>
+                        Atendimento Imediato
+                    </a>
+                    <a href="#areas" class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 text-sm font-bold uppercase tracking-wider flex items-center justify-center transition-all">
+                        Conheça Nossas Áreas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sobre o Escritório -->
+    <section id="sobre" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Imagem -->
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute -inset-4 border border-brand-gold/30 translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
+                    <img src="assets/sobre.jpg" alt="Escritório Lupepso e Marcon" class="w-full h-[620px] object-cover object-[center_20%] shadow-xl grayscale-[15%]">
+                    <!-- Badge Flutuante -->
+                    <div class="absolute bottom-0 left-0 bg-brand-black text-white p-8 -translate-x-4 translate-y-4 hidden md:block border-l-4 border-brand-gold shadow-2xl">
+                        <p class="font-serif text-4xl text-brand-gold mb-1">Exclusivo</p>
+                        <p class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Direito Cível</p>
+                    </div>
+                </div>
+                
+                <!-- Conteúdo -->
+                <div class="order-1 lg:order-2">
+                    <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Sobre o Escritório</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-black font-bold mb-6 leading-tight">Tradição, Ética e Rigor Técnico na Defesa dos seus Interesses.</h2>
+                    
+                    <div class="space-y-5 text-brand-gray/90 leading-relaxed font-light">
+                        <p>
+                            A <strong>Lupepso & Marcon Advocacia Cível</strong> nasceu da união de profissionais com profunda especialização técnica e vasta experiência em litígios complexos e assessoria consultiva.
+                        </p>
+                        <p>
+                            Nossa atuação é pautada pela dedicação exclusiva ao Direito Cível, o que nos permite entregar soluções sob medida, com agilidade e máxima segurança jurídica, seja para proteger o patrimônio de pessoas físicas ou viabilizar os negócios de empresas. 
+                        </p>
+                        <p>
+                            Compreendemos que por trás de cada processo ou contrato existe uma história em jogo. Por isso, adotamos uma postura resolutiva, priorizando estratégias que evitam litígios desnecessários ou que os solucionam de forma célere, sempre pautados pelo rigor ético exigido pela OAB.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-10 flex items-center gap-5 p-6 bg-brand-offwhite border-l-2 border-brand-gold">
+                        <i class="ph ph-quotes text-3xl text-brand-gold/50"></i>
+                        <p class="font-serif italic text-brand-black text-lg leading-snug">"O seu direito levado a sério, com a exclusividade e a segurança que você merece."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Áreas de Atuação -->
+    <section id="areas" class="py-24 bg-brand-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Especialidade</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-black font-bold mb-6">Áreas de Atuação em Direito Cível</h2>
+                <p class="text-brand-gray/80 text-lg font-light">O foco exclusivo garante a profundidade necessária. Conheça as principais demandas que patrocinamos com excelência e domínio técnico.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-black transition-colors duration-300">
+                        <i class="ph ph-scroll text-2xl text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-black font-bold mb-3">Contratos e Obrigações</h3>
+                    <p class="text-sm text-brand-gray/80 leading-relaxed font-light">
+                        Elaboração, revisão minuciosa, rescisão e ações de inadimplemento. Blindagem jurídica para seus negócios e total segurança na assinatura de acordos.
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-black transition-colors duration-300">
+                        <i class="ph ph-shield-warning text-2xl text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-black font-bold mb-3">Responsabilidade Civil</h3>
+                    <p class="text-sm text-brand-gray/80 leading-relaxed font-light">
+                        Reparação integral por danos morais, materiais e estéticos. Atuação assertiva e diligente em casos de erros médicos, acidentes e falhas severas na prestação de serviços.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-black transition-colors duration-300">
+                        <i class="ph ph-buildings text-2xl text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-black font-bold mb-3">Direito Imobiliário e Possessório</h3>
+                    <p class="text-sm text-brand-gray/80 leading-relaxed font-light">
+                        Ações de despejo, renovatórias, usucapião, reintegração de posse e análise de riscos (due diligence) em contratos de compra e venda de imóveis.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-black transition-colors duration-300">
+                        <i class="ph ph-shopping-bag text-2xl text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-black font-bold mb-3">Direito do Consumidor</h3>
+                    <p class="text-sm text-brand-gray/80 leading-relaxed font-light">
+                        Defesa vigorosa de consumidores lesados por grandes corporações, bem como assessoria preventiva e contenciosa estratégica para empresas fornecedoras.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-black transition-colors duration-300">
+                        <i class="ph ph-currency-circle-dollar text-2xl text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-black font-bold mb-3">Recuperação de Crédito</h3>
+                    <p class="text-sm text-brand-gray/80 leading-relaxed font-light">
+                        Estratégias jurídicas eficientes, cobranças extrajudiciais e execuções de títulos para localização de bens e o efetivo recebimento de valores inadimplidos.
+                    </p>
+                </div>
+                
+                <!-- Card CTA -->
+                <div class="bg-brand-black p-8 shadow-sm flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] opacity-10 object-cover"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-serif text-white font-bold mb-4">Dúvidas sobre o seu caso?</h3>
+                        <p class="text-sm text-gray-300 mb-6 font-light">Nossa expertise abrange todo o escopo da legislação cível brasileira.</p>
+                        <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="inline-flex items-center gap-2 bg-brand-gold text-brand-black px-6 py-3 text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors">
+                            Fale com um Especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Diferenciais -->
+    <section id="diferenciais" class="py-24 bg-brand-black text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Por que nos contratar?</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 leading-tight">Uma Advocacia Moderna, Focada em Você e na Solução do Problema.</h2>
+                    <p class="text-gray-300 leading-relaxed mb-8 font-light text-lg">
+                        Esqueça a figura do advogado inacessível. Nosso modelo de trabalho alia o mais alto padrão técnico a um atendimento próximo, transparente e totalmente humanizado.
+                    </p>
+                    <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="inline-flex items-center gap-2 bg-transparent border border-brand-gold text-brand-gold px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-black transition-all">
+                        Agendar Consulta
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="space-y-10">
+                    <!-- Diff 1 -->
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand-gold text-2xl">
+                                <i class="ph ph-handshake"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-serif font-bold mb-2">Atendimento Humanizado e Transparente</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed font-light">Longe do "juridiquês" excessivo. Explicamos claramente os riscos, chances de êxito e andamentos do seu caso. Você participa ativamente das decisões e nunca fica sem resposta.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Diff 2 -->
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand-gold text-2xl">
+                                <i class="ph ph-books"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-serif font-bold mb-2">Rigor Técnico e Constante Atualização</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed font-light">O Direito é dinâmico. Nossa equipe está em constante aprimoramento acadêmico para aplicar as mais recentes decisões e precedentes dos tribunais superiores a favor da sua tese.</p>
+                        </div>
+                    </div>
+
+                    <!-- Diff 3 -->
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand-gold text-2xl">
+                                <i class="ph ph-target"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-serif font-bold mb-2">Foco na Resolução Célere de Conflitos</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed font-light">Priorizamos o que é efetivamente melhor e mais barato para o cliente. Se um acordo estratégico for mais seguro e rápido que uma longa batalha judicial, nós o construiremos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Prova Social -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Confiança</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-black font-bold mb-4">O que dizem nossos clientes</h2>
+                <div class="flex items-center justify-center gap-1 text-brand-gold text-xl">
+                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                </div>
+                <p class="mt-2 text-xs text-gray-500 font-medium uppercase tracking-widest">Avaliações baseadas em Google Reviews</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-brand-offwhite p-8 border border-gray-100 hover:border-brand-gold/30 transition-colors flex flex-col">
+                    <div class="flex items-center gap-1 text-brand-gold text-sm mb-4">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-brand-gray/80 italic mb-8 font-light leading-relaxed flex-1">"Excelente atendimento! As advogadas são muito atenciosas e competentes. Me senti muito bem assistida em todas as etapas do processo. Super recomendo o escritório Lupepso & Marcon!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-black text-brand-gold rounded-full flex items-center justify-center font-serif text-xl font-bold shrink-0">C</div>
+                        <div>
+                            <p class="font-bold text-brand-black text-sm">Claudia S.</p>
+                            <div class="flex items-center gap-1 mt-0.5">
+                                <img src="https://www.google.com/favicon.ico" class="w-3 h-3" alt="Google">
+                                <p class="text-xs text-gray-500">Google Reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-brand-offwhite p-8 border border-gray-100 hover:border-brand-gold/30 transition-colors flex flex-col">
+                    <div class="flex items-center gap-1 text-brand-gold text-sm mb-4">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-brand-gray/80 italic mb-8 font-light leading-relaxed flex-1">"Profissionais incríveis! Desde o primeiro contato fui muito bem tratado. Explicaram tudo com clareza, foram transparentes sobre o andamento do caso e o resultado superou minhas expectativas. Gratidão!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-black text-brand-gold rounded-full flex items-center justify-center font-serif text-xl font-bold shrink-0">R</div>
+                        <div>
+                            <p class="font-bold text-brand-black text-sm">Rafael M.</p>
+                            <div class="flex items-center gap-1 mt-0.5">
+                                <img src="https://www.google.com/favicon.ico" class="w-3 h-3" alt="Google">
+                                <p class="text-xs text-gray-500">Google Reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-brand-offwhite p-8 border border-gray-100 hover:border-brand-gold/30 transition-colors flex flex-col">
+                    <div class="flex items-center gap-1 text-brand-gold text-sm mb-4">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-brand-gray/80 italic mb-8 font-light leading-relaxed flex-1">"Atendimento humanizado e muito eficiente. A Dra. Samantha e a Dra. Paula são extremamente dedicadas e comprometidas com seus clientes. Resolveram meu problema de forma rápida e profissional. Indico com toda a certeza!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-black text-brand-gold rounded-full flex items-center justify-center font-serif text-xl font-bold shrink-0">F</div>
+                        <div>
+                            <p class="font-bold text-brand-black text-sm">Fernanda L.</p>
+                            <div class="flex items-center gap-1 mt-0.5">
+                                <img src="https://www.google.com/favicon.ico" class="w-3 h-3" alt="Google">
+                                <p class="text-xs text-gray-500">Google Reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Link para mais avaliações -->
+            <div class="text-center mt-10">
+                <a href="https://www.google.com/search?kgmid=/g/11n6b83cqn&hl=pt-BR&q=Lupepso+%26+Marcon+Advocacia" target="_blank" class="inline-flex items-center gap-2 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all">
+                    <img src="https://www.google.com/favicon.ico" class="w-4 h-4" alt="Google">
+                    Ver todas as avaliações no Google
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section id="faq" class="py-24 bg-brand-offwhite border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Esclarecimentos</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-black font-bold">Perguntas Frequentes</h2>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="bg-white border border-gray-200 shadow-sm transition-colors duration-300">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-serif font-bold text-brand-black text-lg group-hover:text-brand-gold transition-colors">Como funciona a consulta jurídica inicial?</span>
+                        <i class="ph ph-caret-down text-xl icon-rotate text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-brand-gray/80 text-sm font-light">
+                        <p class="border-t border-gray-100 pt-4 pb-2">Nossa consulta inicial tem como objetivo entender os detalhes fundamentais do seu caso, analisar documentos prévios e apresentar as perspectivas jurídicas viáveis. Ela pode ser realizada de forma presencial em nosso escritório ou via videoconferência, com total comodidade e rigoroso sigilo profissional.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white border border-gray-200 shadow-sm transition-colors duration-300">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-serif font-bold text-brand-black text-lg group-hover:text-brand-gold transition-colors">Quanto tempo dura em média um processo cível?</span>
+                        <i class="ph ph-caret-down text-xl icon-rotate text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-brand-gray/80 text-sm font-light">
+                        <p class="border-t border-gray-100 pt-4 pb-2">O tempo de um processo no Brasil pode variar amplamente dependendo da complexidade do caso, da produção de provas necessárias e da comarca onde ele tramita. No entanto, atuamos ativamente para buscar a maior celeridade, acompanhando de perto os andamentos e priorizando, sempre que estratégico, acordos extrajudiciais que antecipem a solução a favor do cliente.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white border border-gray-200 shadow-sm transition-colors duration-300">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-serif font-bold text-brand-black text-lg group-hover:text-brand-gold transition-colors">Vocês atendem apenas presencialmente ou de forma digital?</span>
+                        <i class="ph ph-caret-down text-xl icon-rotate text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-brand-gray/80 text-sm font-light">
+                        <p class="border-t border-gray-100 pt-4 pb-2">Possuímos uma estrutura tecnológica robusta que nos permite atuar em todo o território nacional. Nosso atendimento pode ser 100% digital, desde as reuniões iniciais por vídeo até a assinatura de procurações/contratos e o acompanhamento processual diário. Tudo para proporcionar conforto, economia de tempo e agilidade, sem perder a excelência técnica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Footer -->
+    <footer class="bg-brand-dark pt-20 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="lg:col-span-5">
+                    <a href="#" class="flex items-center mb-6">
+                        <img src="assets/logo.png" alt="Lupepso & Marcon Advocacia" class="h-14 w-auto object-contain">
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm mb-8 font-light">
+                        Escritório boutique especializado exclusivamente em Direito Cível. Defendemos seu patrimônio e seus negócios com estratégia, alta técnica jurídica e proximidade.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="https://www.instagram.com/lupepsoemarcon.adv/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-gold hover:text-brand-black hover:border-brand-gold transition-all">
+                            <i class="ph ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/lupepsoemarcon.adv/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-gold hover:text-brand-black hover:border-brand-gold transition-all">
+                            <i class="ph ph-facebook-logo text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-white font-serif font-bold text-lg mb-6">Navegação</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors flex items-center gap-2"><i class="ph ph-caret-right text-brand-gold"></i> Início</a></li>
+                        <li><a href="#sobre" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors flex items-center gap-2"><i class="ph ph-caret-right text-brand-gold"></i> Sobre o Escritório</a></li>
+                        <li><a href="#areas" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors flex items-center gap-2"><i class="ph ph-caret-right text-brand-gold"></i> Áreas de Atuação</a></li>
+                        <li><a href="#diferenciais" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors flex items-center gap-2"><i class="ph ph-caret-right text-brand-gold"></i> Nossos Diferenciais</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div class="lg:col-span-4">
+                    <h4 class="text-white font-serif font-bold text-lg mb-6">Fale Conosco</h4>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gold shrink-0">
+                                <i class="ph ph-map-pin"></i>
+                            </div>
+                            <span class="text-gray-400 text-sm font-light leading-relaxed mt-1">R. Marcelino Nogueira, 580 - Sala 02<br>Centro, São José dos Pinhais - PR, 83005-370</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gold shrink-0">
+                                <i class="ph ph-envelope-simple"></i>
+                            </div>
+                            <a href="mailto:contato@lupepsomarcon.com.br" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors">contato@lupepsomarcon.com.br</a>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gold shrink-0">
+                                <i class="ph ph-whatsapp-logo"></i>
+                            </div>
+                            <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" class="text-gray-400 text-sm font-light hover:text-brand-gold transition-colors">(41) 3282-1406</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col lg:flex-row justify-between items-center gap-6 text-xs text-gray-500 font-light">
+                <p>&copy; <span id="year"></span> Lupepso & Marcon Advocacia Cível. Todos os direitos reservados.</p>
+                <p class="max-w-3xl text-center lg:text-right leading-relaxed">
+                    Este site possui caráter meramente informativo e educacional, elaborado em estrita observância ao Código de Ética e Disciplina da Ordem dos Advogados do Brasil (Provimento nº 205/2021). O conteúdo aqui disponibilizado não configura captação indevida de clientela, nem substitui a consulta jurídica formal.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 9. Floating WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send/?phone=554132821406&text=Oi%2C+Dra.+Samantha%2C+acabei+de+visitar+seu+site+e+gostaria+de+contar+com+a+sua+orienta%C3%A7%C3%A3o.&type=phone_number&app_absent=0" target="_blank" aria-label="Atendimento via WhatsApp" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] hover:bg-[#1ebd5b] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-all z-50 whatsapp-pulse z-50">
+        <i class="ph ph-whatsapp-logo text-[32px]"></i>
+    </a>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Update Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = mobileBtn.querySelector('i');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')){
+                menuIcon.classList.replace('ph-x', 'ph-list');
+            } else {
+                menuIcon.classList.replace('ph-list', 'ph-x');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('ph-x', 'ph-list');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navbarInner = document.getElementById('navbar-inner');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('bg-brand-black/95', 'bg-brand-black/98');
+                navbarInner.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('bg-brand-black/98', 'bg-brand-black/95');
+                navbarInner.classList.replace('py-2', 'py-4');
+            }
+        });
+
+        // FAQ Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
+        
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // Fechar os outros itens (comportamento de acordeão clássico)
+                accordions.forEach(otherAcc => {
+                    if (otherAcc !== this) {
+                        otherAcc.classList.remove('active');
+                        otherAcc.nextElementSibling.classList.remove('open');
+                        otherAcc.parentElement.classList.remove('border-brand-gold');
+                    }
+                });
+
+                // Alternar o item clicado
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('open');
+                
+                // Mudar a cor da borda do container quando ativo
+                if(this.classList.contains('active')) {
+                    this.parentElement.classList.add('border-brand-gold');
+                    this.parentElement.classList.remove('border-gray-200');
+                } else {
+                    this.parentElement.classList.remove('border-brand-gold');
+                    this.parentElement.classList.add('border-gray-200');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
