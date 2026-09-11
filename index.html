@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -177,13 +177,25 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Imagem -->
-                <div class="relative order-2 lg:order-1">
+                <div class="relative order-2 lg:order-1 flex gap-4">
                     <div class="absolute -inset-4 border border-brand-gold/30 translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
-                    <img src="assets/sobre.jpg" alt="Escritório Lupepso e Marcon" class="w-full h-[620px] object-cover object-[center_20%] shadow-xl grayscale-[15%]">
-                    <!-- Badge Flutuante -->
-                    <div class="absolute bottom-0 left-0 bg-brand-black text-white p-8 -translate-x-4 translate-y-4 hidden md:block border-l-4 border-brand-gold shadow-2xl">
-                        <p class="font-serif text-4xl text-brand-gold mb-1">Exclusivo</p>
-                        <p class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Direito Cível</p>
+                    <!-- Dra. Samantha -->
+                    <div class="w-1/2 relative group shadow-xl">
+                        <img src="assets/samantha.jpg" alt="Dra. Samantha Marcon" class="w-full h-[500px] md:h-[620px] object-cover object-[center_15%] grayscale-[10%]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                            <p class="text-white font-serif text-lg md:text-xl font-bold leading-none">Dra. Samantha</p>
+                            <p class="text-brand-gold text-[10px] md:text-xs uppercase tracking-widest mt-1">OAB/PR a inserir</p>
+                        </div>
+                    </div>
+                    <!-- Dra. Paula -->
+                    <div class="w-1/2 relative group shadow-xl mt-8 md:mt-12">
+                        <img src="assets/paula.jpg" alt="Dra. Paula Lupepso" class="w-full h-[500px] md:h-[620px] object-cover object-[center_15%] grayscale-[10%]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                            <p class="text-white font-serif text-lg md:text-xl font-bold leading-none">Dra. Paula</p>
+                            <p class="text-brand-gold text-[10px] md:text-xs uppercase tracking-widest mt-1">OAB/PR a inserir</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -213,52 +225,7 @@
         </div>
     </section>
 
-    <!-- 3b. As Sócias -->
-    <section id="socias" class="py-24 bg-brand-offwhite">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4 block">Conheça o Escritório</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-black font-bold">As Advogadas</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Sócia 1: Samantha Marcon -->
-                <div class="bg-white shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition-all duration-300">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="assets/samantha.jpg" alt="Dra. Samantha Marcon" class="w-full h-full object-cover object-[center_15%] grayscale-[10%] group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-6">
-                            <p class="text-white font-serif text-2xl font-bold leading-none">Dra. Samantha Marcon</p>
-                            <p class="text-brand-gold text-xs uppercase tracking-widest mt-1">Direito das Famílias &bull; Cível</p>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-sm text-brand-gray/80 leading-relaxed font-light mb-4">
-                            Especialista em Direito das Famílias pela Fundação Escola Superior do Ministério Público. Atua em divórcios, guarda, pensão alimentícia, partilha de bens e planejamento patrimonial, com especialização em Perícias Forenses pelo IPOG.
-                        </p>
-                        <p class="text-xs text-gray-400 font-medium">OAB/PR <span class="text-gray-500">[nº a inserir]</span></p>
-                    </div>
-                </div>
 
-                <!-- Sócia 2: Paula Lupepso -->
-                <div class="bg-white shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition-all duration-300">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="assets/paula.jpg" alt="Dra. Paula Lupepso" class="w-full h-full object-cover object-[center_15%] grayscale-[10%] group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-6">
-                            <p class="text-white font-serif text-2xl font-bold leading-none">Dra. Paula Lupepso</p>
-                            <p class="text-brand-gold text-xs uppercase tracking-widest mt-1">Direito Criminal &bull; Cível</p>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-sm text-brand-gray/80 leading-relaxed font-light mb-4">
-                            Membro do Instituto Dalledone e da Comissão de Direito Criminal da OAB de São José dos Pinhais. Coordena a área de Direito Cível do escritório, com trajetória no Poder Judiciário que aprimora a condução estratégica das demandas.
-                        </p>
-                        <p class="text-xs text-gray-400 font-medium">OAB/PR <span class="text-gray-500">[nº a inserir]</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 4. Áreas de Atuação -->
     <section id="areas" class="py-24 bg-brand-offwhite">
